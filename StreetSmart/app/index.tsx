@@ -1,3 +1,7 @@
-import HomeScreen from './home_screen';
+// app/index.tsx
+import React from 'react';
+import MapScreen from './map';
 
-export default HomeScreen;
+export default function Home() {
+  return <MapScreen />;
+}
