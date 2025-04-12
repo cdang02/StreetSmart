@@ -73,6 +73,7 @@ const RouteMap = ({ clickedCard }: { clickedCard: Path | null }) => {
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01,
             }}
+            showsCompass={false}
         // key={clickedCard?.id || 'default'}
         >
             {/* Start marker */}

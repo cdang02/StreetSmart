@@ -24,6 +24,7 @@ const SchoolScreen: React.FC = () => {
           latitudeDelta: 0.005,
           longitudeDelta: 0.005,
         }}
+        showsCompass={false}
       >
         <Marker
           coordinate={{ latitude, longitude }}
