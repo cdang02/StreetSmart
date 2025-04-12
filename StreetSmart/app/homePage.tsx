@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
               latitudeDelta: 0.01,
               longitudeDelta: 0.01,
             }}
-            showsCompass={true}
+            showsCompass={false}
 
           >
             <Marker coordinate={{ latitude: 39.949, longitude: -75.194 }} />
