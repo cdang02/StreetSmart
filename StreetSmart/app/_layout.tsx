@@ -1,7 +1,7 @@
-// app/_layout.tsx
 import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { View, StatusBar } from 'react-native';
+import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 
 
 export default function Layout() {
@@ -14,7 +14,10 @@ export default function Layout() {
   return (
     <View style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" />
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="routeSelection" options={{ title: 'Route Selection' }} />
+      </Stack>
     </View>
   );
 }

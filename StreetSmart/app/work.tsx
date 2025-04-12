@@ -6,7 +6,7 @@ import { useRouter } from 'expo-router';
 
 
 const WorkScreen: React.FC = () => {
-  const latitude = 39.949; 
+  const latitude = 39.949;
   const longitude = -75.174;
   const router = useRouter();
 
@@ -44,7 +44,7 @@ const WorkScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
         <Text style={styles.distance}>1.4 mi away</Text>
-        <TouchableOpacity style={styles.selectButton}>
+        <TouchableOpacity style={styles.selectButton} onPress={() => router.push('/routeSelection')}>
           <Text style={styles.selectButtonText}>Select</Text>
         </TouchableOpacity>
       </View>
@@ -55,80 +55,80 @@ const WorkScreen: React.FC = () => {
 export default WorkScreen;
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-    map: {
-      ...StyleSheet.absoluteFillObject,
-    },
-    backButton: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 5,
-        backgroundColor: '#333',
-        padding: 7,
-        borderRadius: 30,
-    },
-    searchBar: {
-      position: 'absolute',
-      top: 40,
-      left: 20,
-      right: 20,
-      backgroundColor: '#363636',
-      borderRadius: 30,
-      padding: 12,
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: 15,
-    },
-    searchText: {
-      fontFamily: 'GolosText',
-      color: '#fff',
-      fontSize: 16,
-    },
-    bottomCard: {
-      position: 'absolute',
-      bottom: 20,
-      left: 20,
-      right: 20,
-      backgroundColor: '#363636',
-      borderRadius: 30,
-      padding: 20,
-    },
-    closeButton: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 5,
-        backgroundColor: '#333',
-        padding: 7,
-        borderRadius: 30,
-    },
-    cardHeader: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-    address: {
-      fontFamily: 'GolosText',
-      color: '#fff',
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-    distance: {
-      color: '#ccc',
-      marginTop: 8,
-      marginBottom: 16,
-    },
-    selectButton: {
-      backgroundColor: '#006CDF',
-      paddingVertical: 12,
-      borderRadius: 30,
-      alignItems: 'center',
-    },
-    selectButtonText: {
-      fontFamily: 'GolosText',
-      color: '#fff',
-      fontSize: 16,
-      fontWeight: '600',
-    },
-  });
+  container: {
+    flex: 1,
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+    backgroundColor: '#333',
+    padding: 7,
+    borderRadius: 30,
+  },
+  searchBar: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    right: 20,
+    backgroundColor: '#363636',
+    borderRadius: 30,
+    padding: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 15,
+  },
+  searchText: {
+    fontFamily: 'GolosText',
+    color: '#fff',
+    fontSize: 16,
+  },
+  bottomCard: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    right: 20,
+    backgroundColor: '#363636',
+    borderRadius: 30,
+    padding: 20,
+  },
+  closeButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+    backgroundColor: '#333',
+    padding: 7,
+    borderRadius: 30,
+  },
+  cardHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  address: {
+    fontFamily: 'GolosText',
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  distance: {
+    color: '#ccc',
+    marginTop: 8,
+    marginBottom: 16,
+  },
+  selectButton: {
+    backgroundColor: '#006CDF',
+    paddingVertical: 12,
+    borderRadius: 30,
+    alignItems: 'center',
+  },
+  selectButtonText: {
+    fontFamily: 'GolosText',
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
