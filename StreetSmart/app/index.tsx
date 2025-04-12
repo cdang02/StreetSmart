@@ -1,6 +1,6 @@
 import React from 'react';
-import MapScreen from './map';
+import HomePage from './homePage';
 
 export default function Home() {
-  return <MapScreen />;
+  return <HomePage />;
 }

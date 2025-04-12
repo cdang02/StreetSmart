@@ -1,14 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Polygon, Polyline } from 'react-native-maps';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
+
+import SearchWrapper from '@/components/searchWrapper';
 
 
 const WorkScreen: React.FC = () => {
   const latitude = 39.949;
   const longitude = -75.174;
   const router = useRouter();
+
+  // search bar state
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   return (
     <View style={styles.container}>
@@ -25,15 +30,38 @@ const WorkScreen: React.FC = () => {
           coordinate={{ latitude, longitude }}
           pinColor="#006CDF"
         />
+
+
+        <Polygon
+          coordinates={[
+            { latitude: 39.951302, longitude: -75.199148 },
+            { latitude: 39.955127, longitude: -75.198278 },
+            { latitude: 39.954395, longitude: -75.191806 },
+            { latitude: 39.950450, longitude: -75.192633 },
+          ]}
+          fillColor="rgba(0,255,0,0.2)"
+          strokeColor="rgba(0,255,0,0.5)"
+          strokeWidth={1}
+        />
+
+        <Polygon
+          coordinates={[
+            { latitude: 39.955748, longitude: -75.202191 },
+            { latitude: 39.951775, longitude: -75.202191 },
+            { latitude: 39.951302, longitude: -75.199148 },
+            { latitude: 39.955127, longitude: -75.198278 },
+          ]}
+          fillColor="rgba(255,0,0,0.2)"
+          strokeColor="rgba(255,0,0,0.5)"
+          strokeWidth={1}
+        />
       </MapView>
 
       {/* Top Search Bar */}
-      <View style={styles.searchBar}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <Icon name="arrow-back" size={22} color="#fff" />
-        </TouchableOpacity>
-        <Text style={styles.searchText}>The Bakeshop on Twentieth</Text>
-      </View>
+      <SearchWrapper
+        value={"269 S 20th St"}
+        onChangeText={setSearchQuery}
+      />
 
       {/* Bottom Card */}
       <View style={styles.bottomCard}>
