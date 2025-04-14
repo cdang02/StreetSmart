@@ -28,22 +28,22 @@ export default function RouteGuidanceScreen() {
       id: '1',
       title: 'GUNSHOTS',
       timeframe: 'Recent',
-      details: `Multiple reports of gunfire were called in along Chestnut St near 2nd Avenue. Witnesses described hearing approximately six shots. Police have arrived on scene; no injuries reported.`,
-      coordinates: { latitude: 39.9489, longitude: -75.1945 },
+      details: `Multiple reports of gunfire called in. Witnesses described hearing approximately six shots. Police have arrived on scene; no injuries reported.`,
+      coordinates: { latitude: 39.95737018518868, longitude: -75.20203609898437 }
     },
     {
       id: '2',
       title: 'ROBBERY',
       timeframe: '2hr ago',
-      details: `An armed robbery occurred at a local convenience store. The suspect fled on foot heading east on Main St. Nearby businesses have heightened security.`,
-      coordinates: { latitude: 39.9496, longitude: -75.1963 },
+      details: `An armed robbery occurred at a local Wawa. The suspect fled on foot heading east on Spruce St. Nearby businesses have heightened security.`,
+      coordinates: { latitude: 39.951640975517044, longitude: -75.19902671848418 }, 
     },
     {
       id: '3',
       title: 'DEATH',
       timeframe: '3hr ago',
       details: `A fatal incident took place in an apartment complex downtown. Police have taped off the area for investigation. No current threat to the public.`,
-      coordinates: { latitude: 39.9493, longitude: -75.1928 },
+      coordinates: { latitude: 39.953401, longitude: -75.183782},
     },
   ];
 
@@ -69,7 +69,7 @@ export default function RouteGuidanceScreen() {
             { latitude: 39.95504005198623, longitude: -75.19424563042115 },
             { latitude: 39.954178, longitude: -75.202984 },
           ]}
-          strokeColor="green"
+          strokeColor="#2DFE54"
           strokeWidth={2}
         />
 
@@ -77,9 +77,11 @@ export default function RouteGuidanceScreen() {
         {alerts.map((alert) => (
           <Marker
             key={alert.id}
-            coordinate={alert.coordinates}
-            pinColor="#FF5252"
-          >
+            coordinate={alert.coordinates}>
+            <View style={styles.emojiContainer}>
+              <Text style={styles.emoji}>⚠️</Text>
+            </View>            
+
             <Callout tooltip>
               <View style={styles.callout}>
                 <Text style={styles.calloutTitle}>{alert.title}</Text>
@@ -251,5 +253,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 14,
     fontFamily: 'GolosText',
+  },
+  emojiContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emoji: {
+    fontSize: 30,
   },
 });
