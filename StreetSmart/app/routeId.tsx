@@ -97,7 +97,7 @@ export default function RouteGuidanceScreen() {
             { latitude: 39.95504005198623, longitude: -75.19424563042115 }, // Rose's Florist
             { latitude: 39.954178, longitude: -75.202984 },
           ]}
-          strokeColor="green"
+          strokeColor="#2DFE54"
           strokeWidth={2}
         />
 
