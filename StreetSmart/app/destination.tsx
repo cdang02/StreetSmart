@@ -36,6 +36,7 @@ const DestinationScreen: React.FC = () => {
       <SearchWrapper
         value={"4050 Sansom St"}
         onChangeText={setSearchQuery}
+        showClearButton={false}
       />
 
       {/* Bottom Card */}

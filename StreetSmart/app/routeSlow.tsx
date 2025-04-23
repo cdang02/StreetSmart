@@ -18,10 +18,10 @@ export const options = {
 export default function RouteGuidanceScreen() {
   const { routeId } = useLocalSearchParams();
 
-  const directionInstruction = 'TURN LEFT on Spruce St.';
-  const timeRemaining = '19 min';
-  const distanceRemaining = '0.95 mi remaining';
-  const arrivalTime = 'Arrival: 17:45';
+  const directionInstruction = 'TURN RIGHT on Chestnut St.';
+  const timeRemaining = '27 min';
+  const distanceRemaining = '1.3 mi remaining';
+  const arrivalTime = 'Arrival: 17:55';
 
   const alerts = [
     {
@@ -66,12 +66,12 @@ export default function RouteGuidanceScreen() {
 
         {/* Route line */}
           <Polyline
-          coordinates={[
-            { latitude: 39.948640, longitude: -75.193059},
-            { latitude: 39.95047911318505, longitude: -75.19268582410943},
-            { latitude: 39.95179093109073, longitude: -75.20304370847883},
-            {latitude: 39.954847998114786, longitude: -75.20245124315579},
-            {latitude: 39.955191716924325, longitude: -75.20444462794761}
+            coordinates={[
+                { latitude: 39.948640, longitude: -75.193059},
+                { latitude: 39.95435010831815, longitude: -75.19181457734419 }, 
+                { latitude: 39.95594102983853, longitude:  -75.20477593224},
+                { latitude: 39.955194100332186, longitude: -75.20492774302501},
+                {latitude: 39.955191716924325, longitude: -75.20444462794761}
             ]}
               strokeColor="#02ccfe"
               strokeWidth={2}

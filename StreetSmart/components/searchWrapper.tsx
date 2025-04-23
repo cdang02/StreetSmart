@@ -7,12 +7,17 @@ type SearchSectionProps = {
     value: string;
     onChangeText: (text: string) => void;
     style?: ViewStyle;
+    showClearButton?: boolean;
+
 };
 
-export default function SearchWrapper({ value, onChangeText, style }: SearchSectionProps) {
+export default function SearchWrapper({ value, onChangeText, style, showClearButton }: SearchSectionProps) {
     return (
         <View style={[styles.searchWrapper, style]}>
-            <SearchBar value={value} onChangeText={onChangeText} />
+            <SearchBar value={value} 
+            onChangeText={onChangeText}
+            showClearButton={showClearButton}
+             />
             <BackButton />
         </View>
     );

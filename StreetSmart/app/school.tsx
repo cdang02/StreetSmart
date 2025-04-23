@@ -60,6 +60,7 @@ const SchoolScreen: React.FC = () => {
       <SearchWrapper
         value={"3231 Walnut St"}
         onChangeText={setSearchQuery}
+        showClearButton={false}
       />
 
       {/* Bottom Card */}

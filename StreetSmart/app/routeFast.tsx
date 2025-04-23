@@ -18,10 +18,10 @@ export const options = {
 export default function RouteGuidanceScreen() {
   const { routeId } = useLocalSearchParams();
 
-  const directionInstruction = 'TURN LEFT on Spruce St.';
-  const timeRemaining = '19 min';
-  const distanceRemaining = '0.95 mi remaining';
-  const arrivalTime = 'Arrival: 17:45';
+  const directionInstruction = 'TURN LEFT at Fisher Fine Arts.';
+  const timeRemaining = '16 min';
+  const distanceRemaining = '0.75 mi remaining';
+  const arrivalTime = 'Arrival: 17:43';
 
   const alerts = [
     {
@@ -66,12 +66,19 @@ export default function RouteGuidanceScreen() {
 
         {/* Route line */}
           <Polyline
-          coordinates={[
-            { latitude: 39.948640, longitude: -75.193059},
-            { latitude: 39.95047911318505, longitude: -75.19268582410943},
-            { latitude: 39.95179093109073, longitude: -75.20304370847883},
-            {latitude: 39.954847998114786, longitude: -75.20245124315579},
-            {latitude: 39.955191716924325, longitude: -75.20444462794761}
+            coordinates={[
+                { latitude: 39.948640, longitude: -75.193059},
+                { latitude: 39.9512442758452, longitude: -75.19253505782692 },
+                { latitude: 39.951338048954135, longitude: -75.19324621574306 },
+                {latitude: 39.95167262958999, longitude: -75.19321576545232},
+                {latitude: 39.95195132274006, longitude: -75.19440243766566},
+                {latitude: 39.952691527836926, longitude: -75.20043204349874},
+                {latitude: 39.95358798772387, longitude: -75.2010221294471},
+                {latitude: 39.95362088511089, longitude: -75.2017195037497},
+                {latitude: 39.95397453102205, longitude: -75.20175169025599},
+                {latitude: 39.95405677399515, longitude: -75.20249197990029},
+                {latitude: 39.954870974092685, longitude:  -75.20237396271062},
+                {latitude: 39.955191716924325, longitude: -75.20444462794761}
             ]}
               strokeColor="#02ccfe"
               strokeWidth={2}

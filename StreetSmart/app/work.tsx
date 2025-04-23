@@ -62,6 +62,7 @@ const WorkScreen: React.FC = () => {
       <SearchWrapper
         value={"269 S 20th St"}
         onChangeText={setSearchQuery}
+        showClearButton={false}
       />
 
       {/* Bottom Card */}

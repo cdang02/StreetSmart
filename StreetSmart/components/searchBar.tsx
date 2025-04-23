@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, TextInputProps, ViewStyle } from 'react-native';
+import { View, TextInput, StyleSheet, TextInputProps, ViewStyle, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 type SearchBarProps = {
     value: string;
+    showClearButton?: boolean;
     onChangeText: (text: string) => void;
     placeholder?: string;
     style?: ViewStyle;
@@ -14,6 +15,7 @@ export default function SearchBar({
     onChangeText,
     placeholder = 'Where To?',
     style,
+    showClearButton
 }: SearchBarProps) {
     return (
         <View style={[styles.searchContainer, style]}>
@@ -25,6 +27,11 @@ export default function SearchBar({
                 placeholderTextColor="#ccc"
                 style={styles.searchInput}
             />
+            {showClearButton && value.length > 0 && (
+                <TouchableOpacity onPress={() => onChangeText('')}>
+                    <Ionicons name="close" size={16} color="#ccc" style={styles.clearIcon} />
+                </TouchableOpacity>
+            )}
         </View>
     );
 }
@@ -46,5 +53,8 @@ const styles = StyleSheet.create({
         flex: 1,
         color: '#fff',
         fontSize: 16,
+    },
+    clearIcon: {
+        marginLeft: 10,
     },
 });
