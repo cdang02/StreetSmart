@@ -22,6 +22,8 @@ export default function RouteGuidanceScreen() {
   const timeRemaining = '16 min';
   const distanceRemaining = '0.75 mi remaining';
   const arrivalTime = 'Arrival: 17:43';
+  const pathColor = '#02ccfe';
+  const pathWdith = 4;
 
   const alerts = [
     {
@@ -80,8 +82,8 @@ export default function RouteGuidanceScreen() {
                 {latitude: 39.954870974092685, longitude:  -75.20237396271062},
                 {latitude: 39.955191716924325, longitude: -75.20444462794761}
             ]}
-              strokeColor="#02ccfe"
-              strokeWidth={2}
+              strokeColor={pathColor}
+              strokeWidth={pathWdith}
           />
 
         {/* Alert pins */}

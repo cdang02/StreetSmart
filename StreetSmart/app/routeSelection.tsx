@@ -85,6 +85,8 @@ const paths: Path[] = [
         info: 'This route takes a slight detour. The area it passes through has no recent crime reported, but historically has had crime.',
     },
 ];
+const pathColor = '#02ccfe';
+const pathWidth = 4;
 
 // renders the map
 const RouteMap = ({ clickedCard }: { clickedCard: Path | null }) => {
@@ -134,8 +136,8 @@ const RouteMap = ({ clickedCard }: { clickedCard: Path | null }) => {
                     {latitude: 39.954847998114786, longitude: -75.20245124315579},
                     {latitude: 39.955191716924325, longitude: -75.20444462794761}
                     ]}
-                    strokeColor="#02ccfe"
-                    strokeWidth={2}
+                    strokeColor={pathColor}
+                    strokeWidth={pathWidth}
                 />
             )}
 
@@ -155,8 +157,8 @@ const RouteMap = ({ clickedCard }: { clickedCard: Path | null }) => {
                     {latitude: 39.954870974092685, longitude:  -75.20237396271062},
                     {latitude: 39.955191716924325, longitude: -75.20444462794761}
                 ]}
-                    strokeColor="#02ccfe"
-                    strokeWidth={2}
+                    strokeColor={pathColor}
+                    strokeWidth={pathWidth}
                 />
             )}
 
@@ -169,8 +171,8 @@ const RouteMap = ({ clickedCard }: { clickedCard: Path | null }) => {
                         { latitude: 39.955194100332186, longitude: -75.20492774302501},
                         {latitude: 39.955191716924325, longitude: -75.20444462794761}
                     ]}
-                    strokeColor="#02ccfe"
-                    strokeWidth={2}
+                    strokeColor={pathColor}
+                    strokeWidth={pathWidth}
                 />
             )}
 
@@ -325,7 +327,15 @@ export default function RouteSelectionScreen() {
                                         </TouchableOpacity>
                                             <TouchableOpacity
                                                 style={[styles.startButton, { backgroundColor: item.buttonColor }]}
-                                                onPress={() => router.push('/routeId')}
+                                                onPress={() => {
+                                                    if (item.id === '1') {
+                                                        router.push('/routeId');
+                                                    } else if (item.id === '2') {
+                                                        router.push('/routeFast');
+                                                    } else if (item.id === '3') {
+                                                        router.push('/routeSlow');
+                                                    }
+                                                }}
                                             >
                                                 <Text style={styles.startButtonText}>Start</Text>
                                             </TouchableOpacity>

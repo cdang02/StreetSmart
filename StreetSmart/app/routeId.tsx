@@ -22,6 +22,7 @@ export default function RouteGuidanceScreen() {
   const timeRemaining = '19 min';
   const distanceRemaining = '0.95 mi remaining';
   const arrivalTime = 'Arrival: 17:45';
+  const pathColor = '#02ccfe';
 
   const alerts = [
     {
@@ -35,7 +36,7 @@ export default function RouteGuidanceScreen() {
       id: '2',
       title: 'ROBBERY',
       timeframe: '2hr ago',
-      details: `An armed robbery occurred CVS. The suspect fled on foot heading east on Spruce St. Nearby businesses have heightened security.`,
+      details: `An armed robbery occurred at Gourmet Grocer. Nearby businesses have heightened security.`,
       coordinates: { latitude: 39.95238180044618, longitude:-75.19950482081953 }, 
     },
     {
@@ -73,8 +74,8 @@ export default function RouteGuidanceScreen() {
             {latitude: 39.954847998114786, longitude: -75.20245124315579},
             {latitude: 39.955191716924325, longitude: -75.20444462794761}
             ]}
-              strokeColor="#02ccfe"
-              strokeWidth={2}
+              strokeColor={pathColor}
+              strokeWidth={4}
           />
 
         {/* Alert pins */}
