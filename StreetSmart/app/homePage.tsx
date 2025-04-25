@@ -150,6 +150,7 @@ const HomePage: React.FC = () => {
             <SearchBar
               value={searchQuery}
               onChangeText={setSearchQuery}
+              showClearButton={searchQuery.length > 0}
             />
           </View>
 
