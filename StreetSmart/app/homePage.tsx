@@ -13,6 +13,27 @@ import { useRef } from 'react';
 
 import SearchBar from '@/components/searchBar';
 
+// define type of RouteButton
+type RouteButton = {
+  title: string;
+  address: string;
+};
+
+// create the preliinary list of RouteButtons
+const buttons: RouteButton[] = [
+  {
+    title: 'Home',
+    address: '4050 Sansom St',
+  },
+  {
+    title: 'Work',
+    address: '123 Main St',
+  },
+  {
+    title: 'School',
+    address: '456 Elm St',
+  }
+]
 
 const HomePage: React.FC = () => {
   const router = useRouter();
