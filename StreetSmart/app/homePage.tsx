@@ -81,102 +81,120 @@ const HomePage: React.FC = () => {
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <CustomMapView
-            location={startLocation}
-            ref={mapRef}
-            clickedCardId={clickedCardId as '1' | '2' | '3' | null}
-            showRoutes={showRouteSelection}
+      <View style={styles.container}>
+        <CustomMapView
+          location={startLocation}
+          ref={mapRef}
+          clickedCardId={clickedCardId as '1' | '2' | '3' | null}
+          showDestination={selectedLocation !== startLocation}
+          showRoutes={showRouteSelection}
+        />
+
+        <View style={{ marginVertical: 60, width: '90%', alignSelf: 'center' }}>
+          <SearchBar
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            showClearButton={searchQuery.length > 0}
           />
+        </View>
 
-          <View style={{ marginVertical: 60, width: '90%', alignSelf: 'center' }}>
-            <SearchBar
-              value={searchQuery}
-              onChangeText={setSearchQuery}
-              showClearButton={searchQuery.length > 0}
-            />
-          </View>
+        {searchResults.length > 0 && (
+          <View style={styles.resultsContainer}>
+            <FlatList
+              data={searchResults}
+              keyExtractor={(item) => item.id}
+              keyboardShouldPersistTaps="handled"
+              renderItem={({ item, index }) => {
+                const isTopResult = index === 0;
+                const isDestination = item.place_name.includes('4050 Sansom Street');
 
-          {searchResults.length > 0 && (
-            <View style={styles.resultsContainer}>
-              <FlatList
-                data={searchResults}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item, index }) => {
-                  const isTopResult = index === 0;
-                  const isDestination = item.place_name.includes('4050 Sansom Street');
+                return (
+                  <TouchableOpacity
+                    style={[
+                      styles.resultItem,
+                      index === searchResults.length - 1 && { borderBottomWidth: 0 },
+                    ]}
+                    onPress={() => {
+                      setIsSelecting(true);
+                      setSearchResults([]);
+                      Keyboard.dismiss();
 
-                  return (
-                    <TouchableOpacity
-                      style={styles.resultItem}
-                      onPress={() => {
-                        setIsSelecting(true);
-                        setSearchResults([]);
-                        Keyboard.dismiss();
-
-                        if (isDestination && isTopResult) {
-                          setSearchQuery('4050 Sansom Street');
-                          if (mapRef.current) {
-                            mapRef.current.animateToRegion({
-                              latitude: item.center[1],
-                              longitude: item.center[0],
-                              latitudeDelta: 0.01,
-                              longitudeDelta: 0.01,
-                            }, 500);
-                          }
-                          setSelectedLocation({
-                            name: "4050 Sansom Street",
+                      if (isDestination && isTopResult) {
+                        setSearchQuery('4050 Sansom Street');
+                        if (mapRef.current) {
+                          mapRef.current.animateToRegion({
                             latitude: item.center[1],
                             longitude: item.center[0],
-                          });
-                        } else {
-                          setSearchQuery(item.place_name);
+                            latitudeDelta: 0.01,
+                            longitudeDelta: 0.01,
+                          }, 500);
                         }
-                      }}
+                        setSelectedLocation({
+                          name: "4050 Sansom Street",
+                          latitude: item.center[1],
+                          longitude: item.center[0],
+                        });
+                      } else {
+                        setSearchQuery(item.place_name);
+                      }
+                    }}
+                  >
+                    <Text
+                      style={[
+                        styles.resultText,
+                        isTopResult && styles.topResultText,
+                      ]}
                     >
-                      <Text style={styles.resultText}>
-                        {item.place_name}
-                      </Text>
-                    </TouchableOpacity>
-                  );
-                }}
-              />
-            </View>
-          )}
-
-          {selectedLocation?.name === '4050 Sansom Street' && !showRouteSelection && (
-            <DestinationCard
-              address={selectedLocation.name}
-              onClose={() => {
-                setSelectedLocation(startLocation);
-                setSearchQuery('');
-              }}
-              onSelect={() => setShowRouteSelection(true)}
-            />
-          )}
-
-          {selectedLocation?.name !== '4050 Sansom Street' && (
-            <View style={styles.compassContainer}>
-              <View style={styles.compass}>
-                <MaterialIcons name="navigation" size={36} color="#4287f5" />
-              </View>
-            </View>
-          )}
-
-          {showRouteSelection && (
-            <RouteSelectionCard
-              onCancel={() => {
-                setShowRouteSelection(false);
-                setClickedCardId(null);
-              }}
-              onSelectRoute={(id: string) => {
-                setClickedCardId(id);
+                      {item.place_name}
+                    </Text>
+                  </TouchableOpacity>
+                );
               }}
             />
-          )}
-        </View>
-      </TouchableWithoutFeedback>
+          </View>
+        )}
+
+        {selectedLocation?.name === '4050 Sansom Street' && !showRouteSelection && (
+          <DestinationCard
+            address={selectedLocation.name}
+            onClose={() => {
+              setSelectedLocation(startLocation);
+              setSearchQuery('');
+
+              // animate the map back to the start location
+              if (mapRef.current) {
+                mapRef.current.animateToRegion({
+                  latitude: startLocation.latitude,
+                  longitude: startLocation.longitude,
+                  latitudeDelta: 0.01,
+                  longitudeDelta: 0.01,
+                }, 500);
+              }
+            }}
+            onSelect={() => setShowRouteSelection(true)}
+          />
+        )}
+
+        {selectedLocation?.name !== '4050 Sansom Street' && (
+          <View style={styles.compassContainer}>
+            <View style={styles.compass}>
+              <MaterialIcons name="navigation" size={36} color="#4287f5" />
+            </View>
+          </View>
+        )}
+
+        {showRouteSelection && (
+          <RouteSelectionCard
+            onCancel={() => {
+              setShowRouteSelection(false);
+              setClickedCardId(null);
+            }}
+            onSelectRoute={(id: string) => {
+              setClickedCardId(id);
+            }}
+          />
+        )}
+      </View>
     </KeyboardAvoidingView>
   );
 };
@@ -198,11 +216,17 @@ const styles = StyleSheet.create({
   resultItem: {
     padding: 12,
     borderBottomColor: '#444',
-    borderBottomWidth: 5,
+    borderBottomWidth: 2,
   },
   resultText: {
     fontSize: 18,
     color: '#fff',
+  },
+  topResultText: {
+    fontFamily: 'GolosText',
+    fontWeight: 'bold',
+    color: '#fff',
+    fontSize: 18,
   },
   compassContainer: {
     position: 'absolute',

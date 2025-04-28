@@ -17,6 +17,7 @@ type CustomMapViewProps = {
     };
     clickedCardId?: '1' | '2' | '3' | null;
     showRoutes?: boolean;
+    showDestination?: boolean;
 };
 
 const alerts: Alert[] = [
@@ -46,7 +47,7 @@ const alerts: Alert[] = [
 const pathColor = '#02ccfe';
 const pathWidth = 4;
 
-const CustomMapView = forwardRef<MapView, CustomMapViewProps>(({ location, clickedCardId, showRoutes }, ref) => {
+const CustomMapView = forwardRef<MapView, CustomMapViewProps>(({ location, clickedCardId, showDestination, showRoutes }, ref) => {
     return (
         <MapView
             ref={ref}
@@ -63,7 +64,9 @@ const CustomMapView = forwardRef<MapView, CustomMapViewProps>(({ location, click
             <Marker coordinate={{ latitude: 39.948746, longitude: -75.193924 }} />
 
             {/* Destination marker */}
-            <Marker coordinate={{ latitude: 39.955192, longitude: -75.204445 }} />
+            {showDestination && (
+                <Marker coordinate={{ latitude: 39.955192, longitude: -75.204445 }} />
+            )}
 
             {/* Alert markers */}
             {alerts.map((alert) => (
