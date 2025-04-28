@@ -97,7 +97,7 @@ const RouteSelectionCard: React.FC<Props> = ({ onCancel, onSelectRoute }) => {
                             <TouchableOpacity
                                 onPress={() => {
                                     setClickedCard(item);
-                                    onSelectRoute(item.id); // ✨ NEW LINE
+                                    onSelectRoute(item.id);
                                 }}
                                 activeOpacity={0.99}
                                 style={[

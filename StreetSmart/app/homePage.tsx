@@ -35,7 +35,7 @@ const HomePage: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState<Location>(startLocation);
   const [isSelecting, setIsSelecting] = useState(false);
   const [showRouteSelection, setShowRouteSelection] = useState(false);
-  const [clickedCardId, setClickedCardId] = useState<string | null>(null);
+  const [clickedCardId, setClickedCardId] = useState<string>('1');
 
   const mapRef = useRef<MapView | null>(null);
 
@@ -85,7 +85,7 @@ const HomePage: React.FC = () => {
         <CustomMapView
           location={startLocation}
           ref={mapRef}
-          clickedCardId={clickedCardId as '1' | '2' | '3' | null}
+          clickedCardId={clickedCardId}
           showDestination={selectedLocation !== startLocation}
           showRoutes={showRouteSelection}
         />
@@ -171,7 +171,20 @@ const HomePage: React.FC = () => {
                 }, 500);
               }
             }}
-            onSelect={() => setShowRouteSelection(true)}
+            onSelect={() => {
+              setClickedCardId('1');
+              setShowRouteSelection(true);
+
+              // animate the map to zoom out to show the route
+              if (mapRef.current) {
+                mapRef.current.animateToRegion({
+                  latitude: 39.9475,
+                  longitude: -75.19922,
+                  latitudeDelta: 0.02,
+                  longitudeDelta: 0.02,
+                }, 500);
+              }
+            }}
           />
         )}
 
@@ -187,7 +200,7 @@ const HomePage: React.FC = () => {
           <RouteSelectionCard
             onCancel={() => {
               setShowRouteSelection(false);
-              setClickedCardId(null);
+              setClickedCardId('1');
             }}
             onSelectRoute={(id: string) => {
               setClickedCardId(id);

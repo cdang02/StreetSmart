@@ -10,7 +10,7 @@ type DestinationCardProps = {
 };
 
 const DestinationCard = ({ address, onClose, onSelect }: DestinationCardProps) => {
-    const router = useRouter(); 1
+    const router = useRouter();
 
     return (
         <View style={styles.bottomCard}>
