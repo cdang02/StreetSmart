@@ -33,27 +33,27 @@ type Path = {
 // alerts
 const alerts = [
     {
-      id: '1',
-      title: 'GUNSHOTS',
-      timeframe: 'Recent',
-      details: `Multiple reports of gunfire called in. Witnesses described hearing approximately six shots. Police have arrived on scene; no injuries reported.`,
-      coordinates: { latitude:  39.95421500772583, longitude:-75.20086783216364 },
+        id: '1',
+        title: 'GUNSHOTS',
+        timeframe: 'Recent',
+        details: `Multiple reports of gunfire called in. Witnesses described hearing approximately six shots. Police have arrived on scene; no injuries reported.`,
+        coordinates: { latitude: 39.95421500772583, longitude: -75.20086783216364 },
     },
     {
-      id: '2',
-      title: 'ROBBERY',
-      timeframe: '2hr ago',
-      details: `An armed robbery occurred CVS. The suspect fled on foot heading east on Spruce St. Nearby businesses have heightened security.`,
-      coordinates: { latitude: 39.95238180044618, longitude:-75.19950482081953 }, 
+        id: '2',
+        title: 'ROBBERY',
+        timeframe: '2hr ago',
+        details: `An armed robbery occurred CVS. The suspect fled on foot heading east on Spruce St. Nearby businesses have heightened security.`,
+        coordinates: { latitude: 39.95238180044618, longitude: -75.19950482081953 },
     },
     {
-      id: '3',
-      title: 'DEATH',
-      timeframe: '3hr ago',
-      details: `A fatal incident took place in an apartment complex downtown. Police have taped off the area for investigation. No current threat to the public.`,
-      coordinates: { latitude: 39.953401, longitude: -75.183782},
+        id: '3',
+        title: 'DEATH',
+        timeframe: '3hr ago',
+        details: `A fatal incident took place in an apartment complex downtown. Police have taped off the area for investigation. No current threat to the public.`,
+        coordinates: { latitude: 39.953401, longitude: -75.183782 },
     },
-  ];
+];
 
 // create the hard coded routes 
 const paths: Path[] = [
@@ -109,32 +109,32 @@ const RouteMap = ({ clickedCard }: { clickedCard: Path | null }) => {
             <Marker coordinate={{ latitude: 39.955191716924325, longitude: -75.20444462794761 }} />
             {/* Alert pins */}
             {alerts.map((alert) => (
-            <Marker
-                key={alert.id}
-                coordinate={alert.coordinates}>
-                <View style={styles.emojiContainer}>
-                <Text style={styles.emoji}>⚠️</Text>
-                </View>            
+                <Marker
+                    key={alert.id}
+                    coordinate={alert.coordinates}>
+                    <View style={styles.emojiContainer}>
+                        <Text style={styles.emoji}>⚠️</Text>
+                    </View>
 
-                <Callout tooltip>
-                <View style={styles.callout}>
-                    <Text style={styles.calloutTitle}>{alert.title}</Text>
-                    <Text style={styles.calloutTime}>{alert.timeframe}</Text>
-                    <Text style={styles.calloutDetails}>{alert.details}</Text>
-                </View>
-                </Callout>
-            </Marker>
+                    <Callout tooltip>
+                        <View style={styles.callout}>
+                            <Text style={styles.calloutTitle}>{alert.title}</Text>
+                            <Text style={styles.calloutTime}>{alert.timeframe}</Text>
+                            <Text style={styles.calloutDetails}>{alert.details}</Text>
+                        </View>
+                    </Callout>
+                </Marker>
             ))}
 
 
             {clickedCard?.id === '1' && (
                 <Polyline
-                coordinates={[
-                    { latitude: 39.948640, longitude: -75.193059},
-                    { latitude: 39.95047911318505, longitude: -75.19268582410943},
-                    { latitude: 39.95179093109073, longitude: -75.20304370847883},
-                    {latitude: 39.954847998114786, longitude: -75.20245124315579},
-                    {latitude: 39.955191716924325, longitude: -75.20444462794761}
+                    coordinates={[
+                        { latitude: 39.948640, longitude: -75.193059 },
+                        { latitude: 39.95047911318505, longitude: -75.19268582410943 },
+                        { latitude: 39.95179093109073, longitude: -75.20304370847883 },
+                        { latitude: 39.954847998114786, longitude: -75.20245124315579 },
+                        { latitude: 39.955191716924325, longitude: -75.20444462794761 }
                     ]}
                     strokeColor={pathColor}
                     strokeWidth={pathWidth}
@@ -143,20 +143,20 @@ const RouteMap = ({ clickedCard }: { clickedCard: Path | null }) => {
 
             {clickedCard?.id === '2' && (
                 <Polyline
-                coordinates={[
-                    { latitude: 39.948640, longitude: -75.193059},
-                    { latitude: 39.9512442758452, longitude: -75.19253505782692 },
-                    { latitude: 39.951338048954135, longitude: -75.19324621574306 },
-                    {latitude: 39.95167262958999, longitude: -75.19321576545232},
-                    {latitude: 39.95195132274006, longitude: -75.19440243766566},
-                    {latitude: 39.952691527836926, longitude: -75.20043204349874},
-                    {latitude: 39.95358798772387, longitude: -75.2010221294471},
-                    {latitude: 39.95362088511089, longitude: -75.2017195037497},
-                    {latitude: 39.95397453102205, longitude: -75.20175169025599},
-                    {latitude: 39.95405677399515, longitude: -75.20249197990029},
-                    {latitude: 39.954870974092685, longitude:  -75.20237396271062},
-                    {latitude: 39.955191716924325, longitude: -75.20444462794761}
-                ]}
+                    coordinates={[
+                        { latitude: 39.948640, longitude: -75.193059 },
+                        { latitude: 39.9512442758452, longitude: -75.19253505782692 },
+                        { latitude: 39.951338048954135, longitude: -75.19324621574306 },
+                        { latitude: 39.95167262958999, longitude: -75.19321576545232 },
+                        { latitude: 39.95195132274006, longitude: -75.19440243766566 },
+                        { latitude: 39.952691527836926, longitude: -75.20043204349874 },
+                        { latitude: 39.95358798772387, longitude: -75.2010221294471 },
+                        { latitude: 39.95362088511089, longitude: -75.2017195037497 },
+                        { latitude: 39.95397453102205, longitude: -75.20175169025599 },
+                        { latitude: 39.95405677399515, longitude: -75.20249197990029 },
+                        { latitude: 39.954870974092685, longitude: -75.20237396271062 },
+                        { latitude: 39.955191716924325, longitude: -75.20444462794761 }
+                    ]}
                     strokeColor={pathColor}
                     strokeWidth={pathWidth}
                 />
@@ -165,11 +165,11 @@ const RouteMap = ({ clickedCard }: { clickedCard: Path | null }) => {
             {clickedCard?.id === '3' && (
                 <Polyline
                     coordinates={[
-                        { latitude: 39.948640, longitude: -75.193059},
-                        { latitude: 39.95435010831815, longitude: -75.19181457734419 }, 
-                        { latitude: 39.95594102983853, longitude:  -75.20477593224},
-                        { latitude: 39.955194100332186, longitude: -75.20492774302501},
-                        {latitude: 39.955191716924325, longitude: -75.20444462794761}
+                        { latitude: 39.948640, longitude: -75.193059 },
+                        { latitude: 39.95435010831815, longitude: -75.19181457734419 },
+                        { latitude: 39.95594102983853, longitude: -75.20477593224 },
+                        { latitude: 39.955194100332186, longitude: -75.20492774302501 },
+                        { latitude: 39.955191716924325, longitude: -75.20444462794761 }
                     ]}
                     strokeColor={pathColor}
                     strokeWidth={pathWidth}
@@ -274,7 +274,7 @@ export default function RouteSelectionScreen() {
                             >
                                 <Text style={styles.cancelText}>Cancel</Text>
                             </TouchableOpacity>
-                            
+
                         </View>
 
                         {expandedCard ? (
@@ -319,12 +319,12 @@ export default function RouteSelectionScreen() {
                                         </View>
 
                                         <View style={styles.buttonContainer}>
-                                        <TouchableOpacity onPress={() => setExpandedCard(item)} activeOpacity={0.8}>
-                                            <View style={[styles.label, { backgroundColor: item.color, flexDirection: 'row', alignItems: 'center' }]}>
-                                            <Text style={styles.labelText}>{item.label}</Text>
-                                            <Ionicons name="chevron-forward" size={12} color="white" style={{ marginLeft: 1 }} />
-                                            </View>
-                                        </TouchableOpacity>
+                                            <TouchableOpacity onPress={() => setExpandedCard(item)} activeOpacity={0.8}>
+                                                <View style={[styles.label, { backgroundColor: item.color, flexDirection: 'row', alignItems: 'center' }]}>
+                                                    <Text style={styles.labelText}>{item.label}</Text>
+                                                    <Ionicons name="chevron-forward" size={12} color="white" style={{ marginLeft: 1 }} />
+                                                </View>
+                                            </TouchableOpacity>
                                             <TouchableOpacity
                                                 style={[styles.startButton, { backgroundColor: item.buttonColor }]}
                                                 onPress={() => {
@@ -346,16 +346,16 @@ export default function RouteSelectionScreen() {
                         )}
                     </View>
                     {showKey && (
-                    <TouchableWithoutFeedback onPress={() => setShowKey(false)}>
-                        <View style={styles.keyModalOverlay}>
-                        <View style={styles.keyModal}>
-                            <Text style={styles.keyTitle}>Score Key</Text>
-                            <Text style={styles.keyItem}>🟢 8–10: Very Safe</Text>
-                            <Text style={styles.keyItem}>🟡 4–7: Moderate Risk</Text>
-                            <Text style={styles.keyItem}>🔴 1–3: High Risk</Text>
-                        </View>
-                        </View>
-                    </TouchableWithoutFeedback>
+                        <TouchableWithoutFeedback onPress={() => setShowKey(false)}>
+                            <View style={styles.keyModalOverlay}>
+                                <View style={styles.keyModal}>
+                                    <Text style={styles.keyTitle}>Score Key</Text>
+                                    <Text style={styles.keyItem}>🟢 8–10: Very Safe</Text>
+                                    <Text style={styles.keyItem}>🟡 4–7: Moderate Risk</Text>
+                                    <Text style={styles.keyItem}>🔴 1–3: High Risk</Text>
+                                </View>
+                            </View>
+                        </TouchableWithoutFeedback>
                     )}
                 </View>
             </TouchableWithoutFeedback>
@@ -465,7 +465,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 10,
-      },
+    },
     expandedCard: {
         backgroundColor: '#252525',
         borderRadius: 20,
@@ -485,25 +485,25 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 12,
         width: 250,
-      },
-      calloutTitle: {
+    },
+    calloutTitle: {
         color: '#fff',
         fontWeight: 'bold',
         fontFamily: 'GolosText',
         fontSize: 16,
-      },
-      calloutTime: {
+    },
+    calloutTime: {
         color: '#bdbdbd',
         fontSize: 13,
         fontFamily: 'GolosText',
         marginBottom: 6,
-      },
-      calloutDetails: {
+    },
+    calloutDetails: {
         color: '#fff',
         fontSize: 14,
         fontFamily: 'GolosText',
-      },
-      keyModalOverlay: {
+    },
+    keyModalOverlay: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -513,25 +513,25 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 200,
-      },
-      
-      keyModal: {
+    },
+
+    keyModal: {
         backgroundColor: '#252525',
         padding: 20,
         borderRadius: 12,
         width: '80%',
-      },
-      
-      keyTitle: {
+    },
+
+    keyTitle: {
         fontSize: 16,
         fontWeight: 'bold',
         color: '#fff',
         marginBottom: 10,
-      },
-      
-      keyItem: {
+    },
+
+    keyItem: {
         fontSize: 14,
         color: '#ccc',
         marginBottom: 6,
-      },
+    },
 });

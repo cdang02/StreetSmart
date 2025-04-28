@@ -6,9 +6,10 @@ import { useRouter } from 'expo-router';
 type DestinationCardProps = {
     address: string;
     onClose: () => void;
-}
+    onSelect: () => void;
+};
 
-const DestinationCard = ({ address, onClose }: DestinationCardProps) => {
+const DestinationCard = ({ address, onClose, onSelect }: DestinationCardProps) => {
     const router = useRouter(); 1
 
     return (
@@ -20,7 +21,7 @@ const DestinationCard = ({ address, onClose }: DestinationCardProps) => {
                 </TouchableOpacity>
             </View>
             <Text style={styles.distance}>1.0 mi away</Text>
-            <TouchableOpacity style={styles.selectButton} onPress={() => router.push('/routeSelection')}>
+            <TouchableOpacity style={styles.selectButton} onPress={onSelect}>
                 <Text style={styles.selectButtonText}>Select</Text>
             </TouchableOpacity>
         </View>
